@@ -7,8 +7,8 @@ import torch
 import matplotlib.pyplot as plt
 
 def separate_data(dataset_photo, dataset_style):
-    data_dir_photo = /data/%s" % dataset_photo
-    data_dir_style = /data/%s" % dataset_style
+    data_dir_photo = dataset_photo
+    data_dir_style = dataset_style
     train_dir = 'train'
     test_dir = 'test'
 
@@ -16,7 +16,7 @@ def separate_data(dataset_photo, dataset_style):
     for dir_name in [train_dir, test_dir]:
         os.makedirs(os.path.join(class_name, dir_name), exist_ok=True)
 
-    source_dir = os.path.join(data_dir_hum)
+    source_dir = os.path.join(data_dir_photo)
     for i, file_name in enumerate(tqdm(os.listdir(source_dir))):
         if i % 10 != 0:
             dest_dir = os.path.join(class_name, train_dir) 
@@ -30,7 +30,7 @@ def separate_data(dataset_photo, dataset_style):
     for dir_name in [train_dir, test_dir]:
         os.makedirs(os.path.join(class_name, dir_name), exist_ok=True)
 
-    source_dir = os.path.join(data_dir_sim)
+    source_dir = os.path.join(data_dir_style)
     for i, file_name in enumerate(tqdm(os.listdir(source_dir))):
         if i % 10 != 0:
             dest_dir = os.path.join(class_name, train_dir) 
@@ -111,3 +111,4 @@ def plot_train_result(real_image, gen_image, recon_image, epoch, save=False,  sh
         plt.show()
     else:
         plt.close()
+        
