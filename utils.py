@@ -6,6 +6,7 @@ from PIL import Image
 from torch.utils import data
 import torch
 import matplotlib.pyplot as plt
+import random
 
 def separate_data(dataset_photo, dataset_style):
     data_dir_photo = dataset_photo
