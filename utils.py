@@ -2,6 +2,7 @@ import shutil
 from tqdm import tqdm
 import numpy as np
 import os
+from PIL import Image
 from torch.utils import data
 import torch
 import matplotlib.pyplot as plt
