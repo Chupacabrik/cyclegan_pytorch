@@ -74,8 +74,8 @@ test_data_loader_B = torch.utils.data.DataLoader(
 
 
 # Get specific test images
-test_real_A_data = train_data_A.__getitem__(9).unsqueeze(0) # Convert to 4d tensor (BxNxHxW)
-test_real_B_data = train_data_B.__getitem__(2).unsqueeze(0)
+test_real_A_data = train_data_A.__getitem__(0).unsqueeze(0) # Convert to 4d tensor (BxNxHxW)
+test_real_B_data = train_data_B.__getitem__(1).unsqueeze(0)
 
 #Build Model 
 G_A = Generator(3, params['ngf'], 3, params['num_resnet']).cuda() # input_dim, num_filter, output_dim, num_resnet
