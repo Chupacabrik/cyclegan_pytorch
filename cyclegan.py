@@ -7,6 +7,7 @@ from torchvision import transforms
 import torch.nn as nn
 import torch.optim as optim
 import numpy as np
+import itertools
 from train import *
 from utils import *
 
@@ -22,6 +23,25 @@ separate_data(opt.dataset_photo, opt.dataset_style)
 os.makedirs("saved_models/", exist_ok=True)
 os.makedirs("images/", exist_ok=True)
 
+params = {
+    'batch_size':1,
+    'input_size':256,
+    'crop_size':256,
+    'fliplr':True,
+    #model params
+    'num_pool':50,
+    'num_epochs':100,
+    'decay_epoch':100,
+    'ngf':32,   #number of generator filters
+    'ndf':64,   #number of discriminator filters
+    'num_resnet':6, #number of resnet blocks
+    'lrG':0.0002,    #learning rate for generator
+    'lrD':0.0002,    #learning rate for discriminator
+    'beta1':0.5 ,    #beta1 for Adam optimizer
+    'beta2':0.999 ,  #beta2 for Adam optimizer
+    'lambdaA':10 ,   #lambdaA for cycle loss
+    'lambdaB':10  ,  #lambdaB for cycle loss
+}
 
 #Загрузим наши изображения
 transform = transforms.Compose([
@@ -51,25 +71,7 @@ test_data_B = Mydataset(dir_simpsons_test, transform)
 test_data_loader_B = torch.utils.data.DataLoader(
     test_data_B, batch_size=batch_size, shuffle=True, num_workers=batch_size)
 
-params = {
-    'batch_size':1,
-    'input_size':256,
-    'crop_size':256,
-    'fliplr':True,
-    #model params
-    'num_pool':50,
-    'num_epochs':100,
-    'decay_epoch':100,
-    'ngf':32,   #number of generator filters
-    'ndf':64,   #number of discriminator filters
-    'num_resnet':6, #number of resnet blocks
-    'lrG':0.0002,    #learning rate for generator
-    'lrD':0.0002,    #learning rate for discriminator
-    'beta1':0.5 ,    #beta1 for Adam optimizer
-    'beta2':0.999 ,  #beta2 for Adam optimizer
-    'lambdaA':10 ,   #lambdaA for cycle loss
-    'lambdaB':10  ,  #lambdaB for cycle loss
-}
+
 
 # Get specific test images
 test_real_A_data = train_data_A.__getitem__(9).unsqueeze(0) # Convert to 4d tensor (BxNxHxW)
