@@ -111,4 +111,4 @@ device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
 fake_A_pool = ImagePool(params['num_pool'])
 fake_B_pool = ImagePool(params['num_pool'])
 
-train(opt.num_epochs, params['decay_epoch'], params['lrD'], params['lrG'], params['lambdaA'], params['lambdaB'])
+train(opt.num_epochs, params['decay_epoch'], params['lrD'], params['lrG'], params['lambdaA'], params['lambdaB'], train_data_loader_A, train_data_loader_B, test_data_loader_A, test_data_loader_B)
