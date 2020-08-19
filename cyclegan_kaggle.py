@@ -50,10 +50,10 @@ transform = transforms.Compose([
     transforms.Normalize(mean=(0.5, 0.5, 0.5), std=(0.5, 0.5, 0.5))
 ])
 
-dir_human_train = '..working/photo/train'  #'/../photo/train'
-dir_human_test =  '..working/photo/test' #'/../photo/test'
-dir_simpsons_train = '..working/style/train'  #'/../style/train'
-dir_simpsons_test = '..working/style/test/'  #'/../style/test/'
+dir_human_train = '../working/photo/train'  #'/../photo/train'
+dir_human_test =  '../working/photo/test' #'/../photo/test'
+dir_simpsons_train = '../working/style/train'  #'/../style/train'
+dir_simpsons_test = '../working/style/test/'  #'/../style/test/'
 batch_size = 1
 train_data_A = Mydataset(dir_human_train, transform)
 train_data_loader_A = torch.utils.data.DataLoader(
