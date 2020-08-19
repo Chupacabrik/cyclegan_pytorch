@@ -5,6 +5,7 @@ from utils import *
 
 def train(num_epochs,decay_epoch, lrD, lrG, lambdaA, lambdaB, train_data_loader_A, train_data_loader_B, test_data_loader_A, test_data_loader_B):
     step = 0
+    device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
     for epoch in range(num_epochs):
         D_A_losses = []
         D_B_losses = []
