@@ -3,7 +3,7 @@ from models import *
 from utils import *
 
 
-def train(num_epochs,decay_epoch, lrD, lrG, lambdaA, lambdaB):
+def train(num_epochs,decay_epoch, lrD, lrG, lambdaA, lambdaB, train_data_loader_A, train_data_loader_B, test_data_loader_A, test_data_loader_B):
     step = 0
     for epoch in range(num_epochs):
         D_A_losses = []
@@ -137,3 +137,4 @@ def train(num_epochs,decay_epoch, lrD, lrG, lambdaA, lambdaB):
     all_losses['cycle_A_avg_losses'] = cycle_A_avg_losses
     all_losses['cycle_B_avg_losses'] = cycle_B_avg_losses
     all_losses.to_csv('avg_losses',index=False)
+    
